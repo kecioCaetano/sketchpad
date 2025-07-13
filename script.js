@@ -32,12 +32,25 @@ function createGrid(size) {
 container.addEventListener('mouseover', (event) => {
         let cell = event.target;
         if (cell.classList.contains("div-item")){
+            cell.classList.add("active");
+            changeOpacity(event);
             cell.style.backgroundColor = getRandomColor();
         }
     }
 )
 
+function changeOpacity(event) {
+  let div = event.target;
 
+  if (div.classList.contains("active")) {
+    let opacity = parseFloat(window.getComputedStyle(div).opacity);
+    if (opacity < 1) {
+      let newOpacity = opacity + 0.1;
+      div.style.opacity = newOpacity;
+    }
+  }
+  return;
+}
 
 button.addEventListener('click', () => {
         
